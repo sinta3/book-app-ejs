@@ -1,0 +1,62 @@
+<div class="columns is-mobile">
+    <div class="column is-three-fifths is-offset-one-fifth">
+      <% books.forEach((item)=> { %>
+      <article class="media">
+        <figure class="media-left">
+          <p class="image is-64x64">
+            <img src=<%= item.volumeInfo.imageLinks.smallThumbnail%> alt="recipe-image" />
+          </p>
+        </figure>
+        <div class="media-content">
+          <div class="content">
+            <h2>
+              <a> <%= item.volumeInfo.title %> </a>
+            </h2>
+            <h3>
+                <a> <%= item.volumeInfo.authors %> </a>
+            </h3>
+            <!-- Add icon library -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+            <% if(item.volumeInfo.ratingsCount && item.volumeInfo.ratingsCount >= 1 ){%>
+                <span style="color:orange" class= "fa fa-star checked"></span>
+            <% }%> 
+            <% if(!item.volumeInfo.ratingsCount || item.volumeInfo.ratingsCount < 1 ){%>
+                <span class= "fa fa-star checked"></span>
+            <% }%> 
+            <% if(item.volumeInfo.ratingsCount && item.volumeInfo.ratingsCount >= 2 ){%>
+                <span style="color:orange" class= "fa fa-star checked"></span>
+            <% }%> 
+            <% if(!item.volumeInfo.ratingsCount || item.volumeInfo.ratingsCount < 2 ){%>
+                <span class= "fa fa-star checked"></span>
+            <% }%> 
+            <% if(item.volumeInfo.ratingsCount && item.volumeInfo.ratingsCount >= 3 ){%>
+                <span style="color:orange" class= "fa fa-star checked"></span>
+            <% }%> 
+            <% if(!item.volumeInfo.ratingsCount || item.volumeInfo.ratingsCount < 3 ){%>
+                <span class= "fa fa-star checked"></span>
+            <% }%> 
+            <% if(item.volumeInfo.ratingsCount && item.volumeInfo.ratingsCount >= 4 ){%>
+                <span style="color:orange" class= "fa fa-star checked"></span>
+            <% }%> 
+            <% if(!item.volumeInfo.ratingsCount || item.volumeInfo.ratingsCount < 4 ){%>
+                <span class= "fa fa-star checked"></span>
+            <% }%> 
+            <% if(item.volumeInfo.ratingsCount && item.volumeInfo.ratingsCount >= 5 ){%>
+                <span style="color:orange" class= "fa fa-star checked"></span>
+            <% }%> 
+            <% if(!item.volumeInfo.ratingsCount || item.volumeInfo.ratingsCount < 5 ){%>
+                <span class= "fa fa-star checked"></span>
+            <% }%> 
+
+            <form action="/books/favorite?title=<%= item.volumeInfo.title %>" method="POST">
+                <div class="buttons">
+                    <button type="submit" class="button is-link is-light"> Add To Favorite</button>
+                </div>
+            </form>
+          </div>
+        </div>
+      </article>
+      <% }) %>
+    </div>
+  </div>
